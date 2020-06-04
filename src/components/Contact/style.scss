@@ -1,0 +1,36 @@
+.contactContainer {
+	position: relative;
+	padding: 4.375rem 8rem 2.5rem 8rem;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+
+	& .contactTextWrapper {
+		width: 40%;
+		margin-top: 0rem;
+		& .contactHeader {
+			p {
+				margin: 0;
+				margin-bottom: 2rem;
+			}
+			font-family: "Lato-Black";
+			font-size: 36px;
+			line-height: 43px;
+			color: #000000;
+		}
+		& .contactSubHeader {
+			p {
+				margin: 0;
+			}
+			font-family: "Lato-Regular";
+			font-size: 1.5rem;
+			line-height: 140%;
+			text-align: justify;
+			color: #000000;
+		}
+	}
+
+	& .contactFormWrapper {
+		width: 40%;
+	}
+}

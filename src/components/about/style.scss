@@ -1,7 +1,7 @@
 .aboutContainer {
 	background-color: white;
-	height: 50vH;
-	padding: 5.875rem 12rem;
+	height: max-content;
+	padding: 5.875rem 8rem 2.5rem 8rem;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -27,5 +27,8 @@
 	& .aboutImageContainer {
 		margin: auto 0;
 		width: 40%;
+		img {
+			border-radius: 15px;
+		}
 	}
 }

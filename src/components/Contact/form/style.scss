@@ -1,0 +1,50 @@
+.formContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	color: black;
+
+	& .nameContainer {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		margin-bottom: 1rem;
+
+		& .firstLastNameBox {
+			padding: 0.75rem 1.25rem;
+			border: 1px solid #333333;
+			box-sizing: border-box;
+			border-radius: 6px;
+			width: 48%;
+			font-size: 1.25rem;
+			color: black !important;
+		}
+	}
+	& .phoneNumberBox {
+		padding: 0.75rem 1.25rem;
+		border: 1px solid #333333;
+		box-sizing: border-box;
+		border-radius: 6px;
+		width: 100%;
+		font-size: 1.25rem;
+		margin-bottom: 1rem;
+		color: black;
+	}
+	& .submitContainer {
+		margin: 0.5rem auto;
+		& .submit {
+			font-size: 1rem;
+			padding: 1rem 2rem;
+			color: white;
+			text-transform: uppercase;
+			width: max-content;
+			line-height: 17px;
+			background-color: #ed4c5c;
+			border: 1.5px solid #ed4c5c;
+			box-sizing: border-box;
+			border-radius: 6px;
+			cursor: pointer;
+			outline: none;
+		}
+	}
+}
