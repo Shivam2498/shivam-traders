@@ -1,0 +1,31 @@
+.aboutContainer {
+	background-color: white;
+	height: 50vH;
+	padding: 5.875rem 12rem;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	position: relative;
+	& .aboutTextWrapper {
+		width: 45%;
+		font-size: 2.25rem;
+		margin: auto 0;
+		color: #000000;
+		& .aboutTextHeader {
+			font-family: "Lato-Black";
+			font-size: 2.25rem;
+			line-height: 43px;
+			padding-bottom: 2rem;
+		}
+		& .aboutTextSubHeader {
+			font-family: "Lato-Regular";
+			font-size: 1.5rem;
+			line-height: 140%;
+		}
+	}
+
+	& .aboutImageContainer {
+		margin: auto 0;
+		width: 40%;
+	}
+}
