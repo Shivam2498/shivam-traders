@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import firebase from '../../../firebase.js';
 import './style.scss';
 
 export class Form extends Component {
@@ -6,7 +7,8 @@ export class Form extends Component {
 		super(props);
 
 		this.state = {
-			email              : {
+			submitted          : false,
+			formData           : {
 				first_name : '',
 				last_name  : '',
 				service    : '',
@@ -36,14 +38,34 @@ export class Form extends Component {
 		return true;
 	}
 
+	writeUserData(data) {
+		firebase.database().ref('users').push({
+			firstName   : data.first_name,
+			lastName    : data.last_name,
+			phoneNo     : data.phoneNo,
+			serviceNeed : data.service
+		});
+	}
+
 	handleSubmit = () => {
-		if (this.isNotEmptyObject(this.state.email)) {
-			console.log(this.state.email);
+		if (this.isNotEmptyObject(this.state.formData)) {
+			this.writeUserData(this.state.formData);
+			this.setState({
+				submitted : true
+			});
+			// this.setState({
+			// 	formData : {
+			// 		first_name : '',
+			// 		last_name  : '',
+			// 		service    : '',
+			// 		phoneNo    : ''
+			// 	}
+			// });
 		}
 	};
 
 	formChange = (event) => {
-		const { email } = this.state;
+		const { formData } = this.state;
 
 		var regName = /^[a-zA-Z ]{1,30}$/;
 		if (event.target.id === 'fname') {
@@ -52,10 +74,10 @@ export class Form extends Component {
 					borderFnameStyling : {
 						border : '2px solid green'
 					},
-					email              : {
+					formData           : {
 						first_name : event.target.value,
-						last_name  : email.last_name,
-						service    : email.service,
+						last_name  : formData.last_name,
+						service    : formData.service,
 						phoneNo    : this.setState.phoneNo
 					}
 				});
@@ -65,10 +87,10 @@ export class Form extends Component {
 					borderFnameStyling : {
 						border : '2px solid red'
 					},
-					email              : {
+					formData           : {
 						first_name : '',
-						last_name  : email.last_name,
-						service    : email.service,
+						last_name  : formData.last_name,
+						service    : formData.service,
 						phoneNo    : this.setState.phoneNo
 					}
 				});
@@ -81,10 +103,10 @@ export class Form extends Component {
 						border : '2px solid green'
 					},
 
-					email              : {
-						first_name : email.first_name,
+					formData           : {
+						first_name : formData.first_name,
 						last_name  : event.target.value,
-						service    : email.service,
+						service    : formData.service,
 						phoneNo    : this.setState.phoneNo
 					}
 				});
@@ -94,10 +116,10 @@ export class Form extends Component {
 					borderLnameStyling : {
 						border : '2px solid red'
 					},
-					email              : {
-						first_name : email.first_name,
+					formData           : {
+						first_name : formData.first_name,
 						last_name  : '',
-						service    : email.service,
+						service    : formData.service,
 						phoneNo    : this.setState.phoneNo
 					}
 				});
@@ -105,18 +127,17 @@ export class Form extends Component {
 		}
 
 		if (event.target.id === 'phno') {
-			console.log(event.target.value);
 			if (/^[+]?([\d]{10})$/.test(event.target.value)) {
 				this.setState({
 					borderPhnoStyling : {
 						border : '2px solid green'
 					},
 
-					email             : {
-						first_name : email.first_name,
-						last_name  : email.last_name,
+					formData          : {
+						first_name : formData.first_name,
+						last_name  : formData.last_name,
 						phoneNo    : event.target.value,
-						service    : email.service
+						service    : formData.service
 					}
 				});
 			}
@@ -125,10 +146,10 @@ export class Form extends Component {
 					borderPhnoStyling : {
 						border : '2px solid red'
 					},
-					email             : {
-						first_name : email.first_name,
-						last_name  : email.last_name,
-						service    : email.service,
+					formData          : {
+						first_name : formData.first_name,
+						last_name  : formData.last_name,
+						service    : formData.service,
 						phoneNo    : ''
 					}
 				});
@@ -137,7 +158,7 @@ export class Form extends Component {
 	};
 
 	render() {
-		const { email } = this.state;
+		const { formData } = this.state;
 		return (
 			<div className="formContainer">
 				<div className="nameContainer">
@@ -147,7 +168,7 @@ export class Form extends Component {
 						placeholder="First Name"
 						type="text"
 						id="fname"
-						value={email.first_name || ''}
+						value={formData.first_name || ''}
 						name="fname"
 						style={this.state.borderFnameStyling}
 						onChange={this.formChange}
@@ -157,7 +178,7 @@ export class Form extends Component {
 						className="firstLastNameBox"
 						placeholder="Last Name"
 						type="text"
-						value={email.last_name || ''}
+						value={formData.last_name || ''}
 						id="lname"
 						name="lname"
 						style={this.state.borderLnameStyling}
@@ -177,15 +198,15 @@ export class Form extends Component {
 				<select
 					onChange={(e) => {
 						this.setState({
-							email : {
-								first_name : email.first_name,
-								last_name  : email.last_name,
-								phoneNo    : email.phoneNo,
+							formData : {
+								first_name : formData.first_name,
+								last_name  : formData.last_name,
+								phoneNo    : formData.phoneNo,
 								service    : e.target.value
 							}
 						});
 					}}
-					value={email.service || ''}
+					value={formData.service || ''}
 					className="phoneNumberBox"
 					name="service"
 					id="service"
@@ -200,7 +221,7 @@ export class Form extends Component {
 				</select>
 				<div className="submitContainer">
 					<button onClick={this.handleSubmit} className="submit">
-						Submit
+						{this.state.submitted ? 'Done' : 'Submit'}
 					</button>
 				</div>
 			</div>
