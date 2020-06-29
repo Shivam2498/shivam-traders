@@ -11,9 +11,9 @@ export class Footer extends Component {
 				</div>
 				<div className="getInTouchWrapper">
 					<h1>Get In Touch</h1>
-					<p>
+					<a href="mailto:shivamtraders18@gmail.com">
 						<span>Email Address:</span> shivamtraders18@gmail.com
-					</p>
+					</a>
 					<p>
 						<span>Contact Number:</span> 9831767911/9830179644
 					</p>

@@ -16,7 +16,7 @@ class ServiceCard extends Component {
 		return (
 			<div className="cardContainer">
 				<div className="cardImgWrapper">
-					<img className="cardImg" src={data.image} />
+					<img alt="Hello" className="cardImg" src={data.image} />
 				</div>
 				<div className="cardTextWrapper">
 					<p className="cardHeader">{data.heading}</p>

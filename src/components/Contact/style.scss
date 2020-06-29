@@ -34,3 +34,18 @@
 		width: 40%;
 	}
 }
+
+@media screen and (max-width: 500px) {
+	.contactContainer {
+		position: relative;
+		padding: 3rem 1rem;
+		flex-direction: column;
+		& .contactTextWrapper {
+			width: 100%;
+		}
+		& .contactFormWrapper {
+			padding-top: 2rem;
+			width: 100%;
+		}
+	}
+}

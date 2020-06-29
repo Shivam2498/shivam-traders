@@ -22,3 +22,19 @@
 		}
 	}
 }
+
+@media screen and (max-width: 500px) {
+	.serviceContainer {
+		position: relative;
+		height: max-content;
+		padding: 3rem 1rem;
+		& .serviceWrapper {
+			flex-direction: column;
+			.serviceCardWrapper {
+				width: 100%;
+				padding: 0rem;
+				padding-bottom: 2rem;
+			}
+		}
+	}
+}

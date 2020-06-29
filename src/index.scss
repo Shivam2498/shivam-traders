@@ -9,6 +9,16 @@ body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
+*:focus {
+	outline: none;
+}
+
+input:valid {
+	color: green;
+}
+input:invalid {
+	color: red;
+}
 
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;

@@ -15,7 +15,7 @@ export class About extends Component {
 					</div>
 				</div>
 				<div className="aboutImageContainer">
-					<img src={aboutImage} />
+					<img alt="Hello" src={aboutImage} />
 				</div>
 			</div>
 		);

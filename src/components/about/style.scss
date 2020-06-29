@@ -8,7 +8,6 @@
 	position: relative;
 	& .aboutTextWrapper {
 		width: 45%;
-		font-size: 2.25rem;
 		margin: auto 0;
 		color: #000000;
 		& .aboutTextHeader {
@@ -29,6 +28,25 @@
 		width: 40%;
 		img {
 			border-radius: 15px;
+			width: 100%;
+		}
+	}
+}
+
+@media screen and (max-width: 500px) {
+	.aboutContainer {
+		padding: 3rem 1rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		position: relative;
+		& .aboutTextWrapper {
+			width: 100%;
+			padding-bottom: 2rem;
+		}
+		& .aboutImageContainer {
+			margin: auto 0;
+			width: 100%;
 		}
 	}
 }
